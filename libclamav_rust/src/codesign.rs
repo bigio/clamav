@@ -591,7 +591,7 @@ impl Verifier {
                             .find(|name_entry| {
                                 name_entry.object().nid() == openssl::nid::Nid::COMMONNAME
                             })
-                            .map(|name_entry| name_entry.data().as_utf8().unwrap().to_string())
+                            .map(|name_entry| name_entry.data().to_string())
                             .unwrap();
 
                         if root_common_names.contains(&common_name) {
@@ -633,7 +633,7 @@ impl Verifier {
                         .find(|name_entry| {
                             name_entry.object().nid() == openssl::nid::Nid::COMMONNAME
                         })
-                        .map(|name_entry| name_entry.data().as_utf8().unwrap().to_string())
+                        .map(|name_entry| name_entry.data().to_string())
                         .unwrap()
                 })
                 .collect();
