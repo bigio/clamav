@@ -597,8 +597,7 @@ impl Verifier {
                                 )
                             })?
                             .data()
-                            .as_utf8()?
-                            .to_string();
+                            .to_string()?;
 
                         if root_common_names.contains(&common_name) {
                             return Err(Error::CertificateStore(format!(
@@ -645,7 +644,7 @@ impl Verifier {
                                 "Signer certificate is missing a common name".to_string(),
                             )
                         })?;
-                    Ok(name_entry.data().as_utf8()?.to_string())
+                    Ok(name_entry.data().to_string()?)
                 })
                 .collect::<Result<Vec<String>, Error>>()?;
 
